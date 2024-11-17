@@ -24,10 +24,13 @@
   },
   "type": "module",
   "dependencies": {
+    "@azure/identity": "^4.5.0",
+    "@azure/openai": "2.0.0-beta.3",
     "classnames": "^2.5.1",
     "effector": "^23.2.2",
     "effector-react": "^23.2.1",
     "m3u8-parser": "^7.1.0",
+    "openai": "^4.72.0",
     "patronum": "^2.2.0",
     "qs": "^6.12.3",
     "react": "18.2.0",
