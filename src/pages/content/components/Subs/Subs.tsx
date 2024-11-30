@@ -59,13 +59,23 @@ export const Subs: FC<TSubsProps> = () => {
   };
 
   return (
-    <Draggable>
+    <Draggable handle=".drag-handle">
       <div
         id="es-subs"
         onMouseLeave={handleOnMouseLeave}
         onMouseEnter={handleOnMouseEnter}
         style={{ fontSize: `${((video.clientWidth / 100) * subsFontSize) / 30}px` }}
       >
+        <div className="drag-handle" style={{ 
+          height: '20px', 
+          cursor: 'move',
+          position: 'absolute',
+          top: '-20px',
+          left: 0,
+          right: 0,
+          background: 'rgba(0,0,0,0.2)',
+          borderRadius: '4px 4px 0 0'
+        }}></div>
         {currentSubs.map((sub) => (
           <Sub sub={sub} />
         ))}
