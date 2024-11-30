@@ -13,9 +13,11 @@
   font-size: 16px;
   font-style: normal;
   white-space: normal;
-  box-sizing: content-box;
   color: #fff;
   box-sizing: border-box;
+  cursor: text;
+  user-select: text; 
+
 
   &:after {
     content: "";
@@ -59,6 +61,7 @@
     margin-right: 4px;
     display: flex;
     align-items: center;
+    cursor: pointer;
     svg {
       width: 100%;
     }
@@ -95,6 +98,7 @@
   hyphens: auto;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   .es-settings-button {
     flex: 0 0 14px;
@@ -110,12 +114,14 @@
 .es-translation-variant-part-of-speach {
   text-align: left;
   color: #737373;
+  cursor: pointer;
 }
 
 .es-translation-variant-synonyms {
   width: fit-content;
   color: #bbbbbb;
   flex: 1;
+  cursor: pointer;
 }
 
 .es-translation-services-hr {
@@ -128,10 +134,12 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .es-translation-service {
   width: 20px;
+  cursor: pointer;
 
   img {
     width: 100%;
