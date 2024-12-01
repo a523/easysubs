@@ -1,0 +1,96 @@
+.word-translation-popup {
+  position: fixed;  // 使用 fixed 而不是 absolute
+  z-index: 10000;   // 确保在最上层
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 240px;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  pointer-events: auto;  // 确保可以点击
+  
+  // 添加动画效果
+  animation: popup 0.2s ease-out;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    .close-button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  
+  &__content {
+    .translation {
+      font-size: 15px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    
+    .translation-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 14px;
+      
+      .part-of-speech {
+        color: #888;
+        font-style: italic;
+      }
+      
+      .word {
+        color: #e0e0e0;
+      }
+    }
+  }
+  
+  .add-to-dict-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+    background: #4a9eff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+    
+    &:hover {
+      background: #3b8be6;
+    }
+  }
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

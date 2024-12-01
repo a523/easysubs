@@ -131,24 +131,22 @@ const SubItem: FC<TSubItemProps> = ({ subItem, index }) => {
     subItemMouseLeft,
     $findPhrasalVerbsPendings,
   ]);
-  const [showTranslation, setShowTranslation] = useState(false);
   const [showWordPopup, setShowWordPopup] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleOnMouseLeave = () => {
     if (!showWordPopup) {
-      setShowTranslation(false);
       handleSubItemMouseLeft();
     }
   };
 
   const handleOnMouseEnter = () => {
-    setShowTranslation(true);
     handleSubItemMouseEntered(subItem.cleanedText);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setShowWordPopup(true);
+      event.stopPropagation();
+      setShowWordPopup(true);
   };
 
   return (
@@ -166,6 +164,7 @@ const SubItem: FC<TSubItemProps> = ({ subItem, index }) => {
           <WordTranslationPopup
             word={subItem.cleanedText}
             onClose={() => setShowWordPopup(false)}
+            position={position}
           />
         )}
       </pre>
