@@ -92,7 +92,7 @@ const Sub: FC<{ sub: TSub }> = ({ sub }) => {
     $findPhrasalVerbsPendings,
   ]);
 
-  const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOnDoubleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setShowTranslation(true);
   };
@@ -104,7 +104,7 @@ const Sub: FC<{ sub: TSub }> = ({ sub }) => {
   return (
     <div
       className="es-sub"
-      onClick={handleOnClick}
+      onDoubleClick={handleOnDoubleClick}
       onMouseLeave={() => setShowTranslation(false)}
       style={{
         background: `rgba(0, 0, 0, ${subsBackground ? subsBackgroundOpacity / 100 : 0})`,
