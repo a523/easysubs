@@ -22,6 +22,7 @@ import { addKeyboardEventsListeners, removeKeyboardEventsListeners } from "@src/
 import { SubItemTranslation } from "./SubItemTranslation";
 import { PhrasalVerbTranslation } from "./PhrasalVerbTranslation";
 import { SubFullTranslation } from "./SubFullTranslation";
+import { WordTranslationPopup } from "./WordTranslationPopup";
 
 type TSubsProps = {};
 
@@ -131,10 +132,13 @@ const SubItem: FC<TSubItemProps> = ({ subItem, index }) => {
     $findPhrasalVerbsPendings,
   ]);
   const [showTranslation, setShowTranslation] = useState(false);
+  const [showWordPopup, setShowWordPopup] = useState(false);
 
   const handleOnMouseLeave = () => {
-    setShowTranslation(false);
-    handleSubItemMouseLeft();
+    if (!showWordPopup) {
+      setShowTranslation(false);
+      handleSubItemMouseLeft();
+    }
   };
 
   const handleOnMouseEnter = () => {
@@ -142,9 +146,9 @@ const SubItem: FC<TSubItemProps> = ({ subItem, index }) => {
     handleSubItemMouseEntered(subItem.cleanedText);
   };
 
-  const handleClick = () => {
-    setShowTranslation(false);
-    handleSubItemMouseLeft();
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setShowWordPopup(true);
   };
 
   return (
@@ -158,14 +162,11 @@ const SubItem: FC<TSubItemProps> = ({ subItem, index }) => {
         onClick={handleClick}
       >
         {subItem.text}
-        {!findPhrasalVerbsPendings[subItem.cleanedText] && showTranslation && (
-          <>
-            {currentPhrasalVerb ? (
-              <PhrasalVerbTranslation phrasalVerb={currentPhrasalVerb} />
-            ) : (
-              <SubItemTranslation text={subItem.cleanedText} />
-            )}
-          </>
+        {!findPhrasalVerbsPendings[subItem.cleanedText] && showWordPopup && (
+          <WordTranslationPopup
+            word={subItem.cleanedText}
+            onClose={() => setShowWordPopup(false)}
+          />
         )}
       </pre>
       <pre className="es-sub-item-space"> </pre>
